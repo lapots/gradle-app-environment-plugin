@@ -1,0 +1,12 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+allprojects {
+    
+    group = 'com.lapots.gradle.plugins.appenv'
+
+}
