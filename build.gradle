@@ -1,3 +1,4 @@
+apply plugin: "idea"
 apply plugin: "kotlin"
 
 buildscript {
@@ -15,9 +16,10 @@ group = 'com.lapots.gradle.plugins.appenv'
 
 repositories {
     mavenCentral()
+    maven { url "https://dl.bintray.com/kotlin/kotlin-dev/" }
 }
 
 dependencies {
-    compile gradleApi()
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile gradleApi()
 }
