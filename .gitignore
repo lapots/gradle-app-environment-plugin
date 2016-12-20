@@ -92,4 +92,5 @@ npm-debug.log
 /scripts/bower/bower-*
 .vscode
 *.stackdump
+lib/
 
