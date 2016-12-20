@@ -1,12 +1,23 @@
+apply plugin: "kotlin"
 
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://dl.bintray.com/kotlin/kotlin-dev/" }
+    }
+    
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
-allprojects {
-    
-    group = 'com.lapots.gradle.plugins.appenv'
+group = 'com.lapots.gradle.plugins.appenv'
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
