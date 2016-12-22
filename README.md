@@ -11,6 +11,8 @@ The prototype for it looks like this
             srcLink ''
             downloadPath ''
             installationPath ''
+            startCommand '' // optional parameter for applications that cannot be start via .exe
+            stopCommand '' // optional parameter
         }
        
         environment {

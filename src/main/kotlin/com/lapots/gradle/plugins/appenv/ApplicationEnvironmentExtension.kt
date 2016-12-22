@@ -6,5 +6,7 @@ package com.lapots.gradle.plugins.appenv
 data class ApplicationEnvironmentExtension(
         val srcLink: String,
         val downloadPath: String,
-        val installationPath: String) {
+        val installationPath: String,
+        val startCommand: String = "",
+        var stopCommand: String = "") {
 }
