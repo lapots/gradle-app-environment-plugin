@@ -2,8 +2,8 @@ package com.lapots.gradle.plugins.appenv.core
 
 import com.lapots.gradle.plugins.appenv.core.download.DownloadClientFactory
 import org.apache.commons.io.*
+import org.apache.http.HttpResponse
 import java.io.File
-import java.net.URL
 
 /**
  * Class for downloading resource from the link.
