@@ -13,7 +13,7 @@ import java.net.URL
 /**
  * Class for downloading resource from the link.
  */
-object ResourceController {
+object DownloadUtils {
 
     fun download(link: String, storePath: String) {
         downloadWithApacheHttp(link, storePath)
