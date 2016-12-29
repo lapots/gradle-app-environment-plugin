@@ -26,4 +26,6 @@ dependencies {
     compile "org.apache.httpcomponents:httpclient:$httpClientVersion"
     compile "commons-io:commons-io:$commonsIoVersion"
     compile "com.github.kittinunf.fuel:fuel:$kotlinFuelVersion"
+    compile "org.tukaani:xz:$xzLibraryVersion"
+    compile "org.apache.commons:commons-compress:$commonsCompressVersion"
 }

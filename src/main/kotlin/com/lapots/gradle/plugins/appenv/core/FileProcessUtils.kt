@@ -1,6 +1,8 @@
 package com.lapots.gradle.plugins.appenv.core
 
+import org.apache.commons.compress.compressors.xz.XZCompressorInputStream
 import org.apache.commons.io.FilenameUtils
+import org.apache.commons.io.IOUtils
 import java.io.BufferedInputStream
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -22,6 +24,8 @@ object FileProcessUtils {
     }
 
     private fun unpackXz(src: String) {
+        println("Attempt to unpack XZ")
+
         val inputFileStream = FileInputStream(src)
         val inputStream = BufferedInputStream(inputFileStream)
         // remove xz extension
@@ -29,22 +33,19 @@ object FileProcessUtils {
         val outputStream = FileOutputStream(xzContentName)
         val compressorInput = XZCompressorInputStream(inputStream)
 
-        val buffer = byte[1000]
-        val n = 0
-        while (-1 != (n = compressorInput.read(buffer))) {
-            outputStream.write(buffer, 0, n)
-        }
-        outputStream.close()
-        compressorInput.close()
+        IOUtils.copy(compressorInput, outputStream)
 
         // delegate further processing
         install(xzContentName)
     }
 
     private fun unpackTar(src: String) {
-
+        println("Attempt to unpack TAR")
     }
 
+    // general trouble with MSI is that it varies from version
+    // to version of Windows OS
     private fun installMsi(src: String) {
+        println("Attempt to install MSI")
     }
 }
