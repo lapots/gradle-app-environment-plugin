@@ -16,6 +16,7 @@ group = 'com.lapots.gradle.plugins.appenv'
 
 repositories {
     mavenCentral()
+    jcenter()
     maven { url "https://dl.bintray.com/kotlin/kotlin-dev/" }
 }
 
@@ -24,4 +25,5 @@ dependencies {
     compile gradleApi()
     compile "org.apache.httpcomponents:httpclient:$httpClientVersion"
     compile "commons-io:commons-io:$commonsIoVersion"
+    compile "com.github.kittinunf.fuel:fuel:$kotlinFuelVersion"
 }
