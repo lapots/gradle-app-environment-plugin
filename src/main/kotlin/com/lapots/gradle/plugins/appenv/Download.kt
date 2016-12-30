@@ -6,7 +6,7 @@ import org.gradle.api.tasks.TaskAction
 /**
  * Downloads file.
  */
-class Download : DefaultTask {
+open class Download : DefaultTask {
 
     val downloadAction: DownloadAction
 

@@ -17,7 +17,7 @@ open class ApplicationEnvironmentExtension : Configurable<ApplicationEnvironment
     var stopCommand: String
     var project: Any?
 
-    constructor(project: Object) {
+    constructor(project: Any) {
         srcLink = ""
         downloadPath = ""
         installationPath = ""

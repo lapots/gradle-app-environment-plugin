@@ -7,7 +7,7 @@ import org.gradle.api.Project
 /**
  * Downloads files.
  */
-class DownloadAction(val project: Project?) {
+open class DownloadAction(val project: Project?) {
 
     var srcLink = ""
     var downloadPath = ""

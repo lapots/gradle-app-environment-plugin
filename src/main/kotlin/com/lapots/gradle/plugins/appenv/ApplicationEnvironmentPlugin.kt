@@ -21,5 +21,6 @@ class ApplicationEnvironmentPlugin : Plugin<Project> {
                     ApplicationEnvironmentExtension::class.java,
                     project
                 )
+        project.task(mapOf ("type" to Download::class.java), "downloadEnv")
     }
 }
