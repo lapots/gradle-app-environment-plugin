@@ -13,6 +13,7 @@ buildscript {
 }
 
 group = 'com.lapots.gradle.plugins.appenv'
+version = '0.1'
 
 repositories {
     mavenCentral()
