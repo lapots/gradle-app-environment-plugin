@@ -18,6 +18,7 @@ object FileProcessUtils {
             "xz"    -> unpackXz(src)
             "tar"   -> unpackTar(src)
             else -> {
+                println("Unable to process further: $src")
                 // were are done
             }
         }
