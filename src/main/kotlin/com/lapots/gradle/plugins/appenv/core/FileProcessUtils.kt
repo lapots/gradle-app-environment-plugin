@@ -1,13 +1,7 @@
 package com.lapots.gradle.plugins.appenv.core
 
 import com.lapots.gradle.plugins.appenv.core.dsl.UnpackStream
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream
-import org.apache.commons.compress.compressors.xz.XZCompressorInputStream
 import org.apache.commons.io.FilenameUtils
-import org.apache.commons.io.IOUtils
-import java.io.BufferedInputStream
-import java.io.FileInputStream
-import java.io.FileOutputStream
 
 /**
  * Class for unpacking (or installing) downloaded files.

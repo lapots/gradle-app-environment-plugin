@@ -1,6 +1,5 @@
 package com.lapots.gradle.plugins.appenv.core.dsl
 
-import org.apache.commons.io.FileUtils
 import org.apache.commons.io.FilenameUtils
 import org.apache.commons.io.IOUtils
 import java.io.BufferedInputStream
