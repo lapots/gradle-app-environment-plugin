@@ -9,12 +9,6 @@ import org.gradle.util.ConfigureUtil
  * Extension for {@link ApplicationEnvironmentPlugin}.
  */
 open class ApplicationEnvironmentExtension {
-    val project: Any?
-
-    constructor(project: Any?) {
-        this.project = project
-    }
-
-    var srcLink: String = ""
-    var downloadPath: String = ""
+    lateinit var srcLink: String
+    lateinit var downloadPath: String
 }
