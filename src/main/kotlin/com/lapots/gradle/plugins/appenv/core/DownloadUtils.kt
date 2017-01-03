@@ -1,7 +1,8 @@
 package com.lapots.gradle.plugins.appenv.core
 
-import com.github.kittinunf.fuel.Fuel
-import java.io.File
+import org.apache.commons.io.FilenameUtils
+import java.net.URL
+import java.nio.file.*
 
 /**
  * Class for downloading resource from the link.
@@ -14,9 +15,14 @@ object DownloadUtils {
     }
 
     private fun downloadWithFuel(linkUrl: String, storePath: String) {
-        Fuel.download(linkUrl)
-                .destination { response, url -> File(storePath) }
-                .response { request, response, result -> }
+        println("Filename: ${ FilenameUtils.getName(linkUrl) }")
+        val finalPath = FilenameUtils.separatorsToSystem(storePath + "/" + FilenameUtils.getName(linkUrl))
+        val path = Paths.get(finalPath)
+        URL(linkUrl).openStream().use {
+            if (!Files.exists(path)) { Files.createDirectories(path) }
+            // adjust to create if not exist
+            Files.copy(it, path, StandardCopyOption.REPLACE_EXISTING)
+        }
     }
 
 }
