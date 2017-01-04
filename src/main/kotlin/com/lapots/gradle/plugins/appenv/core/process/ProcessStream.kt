@@ -13,8 +13,6 @@ import org.apache.commons.io.FilenameUtils
  * Currently support only MSI.
  */
 class ProcessStream {
-    val QUIET_INSTALL = "/q"
-
     companion object : KLogging()
 
     lateinit var source: String // /downloads/file.msi
