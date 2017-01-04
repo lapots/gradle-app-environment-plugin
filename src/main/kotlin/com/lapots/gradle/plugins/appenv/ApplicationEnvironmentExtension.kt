@@ -6,4 +6,5 @@ package com.lapots.gradle.plugins.appenv
 open class ApplicationEnvironmentExtension {
     lateinit var srcLink: String
     lateinit var downloadPath: String
+    lateinit var installPath: String
 }

@@ -1,17 +1,17 @@
 package com.lapots.gradle.plugins.appenv
 
-import com.lapots.gradle.plugins.appenv.core.DownloadUtils
+import com.lapots.gradle.plugins.appenv.core.FileProcessingCore
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
 /**
- * Downloads file.
+ * Installs / Unpacks file.
  */
-open class Download : DefaultTask() {
+open class InstallTask : DefaultTask() {
 
     @TaskAction
-    fun download() {
+    fun install() {
         val extension = this.project.extensions.getByName("app") as ApplicationEnvironmentExtension
-        DownloadUtils.download(extension.srcLink, extension.downloadPath)
+        FileProcessingCore(extension).execute()
     }
 }
