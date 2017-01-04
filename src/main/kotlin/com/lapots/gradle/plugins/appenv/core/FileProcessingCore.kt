@@ -5,13 +5,14 @@ import com.lapots.gradle.plugins.appenv.core.PluginConstants.DEFAULT_SEPARATOR
 import com.lapots.gradle.plugins.appenv.core.PluginConstants.SUPPORTED_ARCHIVE_EXTENSIONS
 import com.lapots.gradle.plugins.appenv.core.compressor.UnpackStream
 import mu.KLogging
-import org.apache.commons.io.FileSystemUtils
 import org.apache.commons.io.FilenameUtils
 
 /**
  * Processes downloaded file.
  */
-class FileProcessingCore(val extension: ApplicationEnvironmentExtension) : KLogging() {
+class FileProcessingCore(val extension: ApplicationEnvironmentExtension) {
+
+    companion object : KLogging()
 
     fun execute() {
         val ext = FilenameUtils.getExtension(extension.srcLink)

@@ -16,9 +16,11 @@ import java.io.FileOutputStream
 /**
  * DSL for fancy unpacking.
  */
-class UnpackStream : KLogging() {
+class UnpackStream  {
     lateinit var source : String // /downloads/file.tar.xz
     var destination = "" // /installations
+
+    companion object : KLogging()
 
     fun file(name: String) : File = File(name).apply {
         if (!parentFile.mkdirs()) {

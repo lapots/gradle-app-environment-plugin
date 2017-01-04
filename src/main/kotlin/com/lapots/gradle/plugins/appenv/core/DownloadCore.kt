@@ -12,7 +12,9 @@ import java.nio.file.StandardCopyOption
 /**
  * Does downloading.
  */
-class DownloadCore(val extension: ApplicationEnvironmentExtension) : KLogging() {
+class DownloadCore(val extension: ApplicationEnvironmentExtension) {
+
+    companion object : KLogging()
 
     fun execute() {
         logger.debug { "Attempt to download from ${extension.srcLink} " +
