@@ -16,6 +16,7 @@ class FileProcessingCore(val extension: ApplicationEnvironmentExtension) {
     companion object : KLogging()
 
     fun execute() {
+        // TODO: adjust logic to support downloadPath instead of srcLink
         val ext = FilenameUtils.getExtension(extension.srcLink)
         when (ext) {
             in SUPPORTED_ARCHIVE_EXTENSIONS -> processArchive()

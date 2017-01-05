@@ -18,10 +18,10 @@ class DownloadCore(val extension: ApplicationEnvironmentExtension) {
 
     fun execute() {
         logger.debug { "Attempt to download from ${extension.srcLink} " +
-                "and save into ${extension.installPath}" }
+                "and save into ${extension.downloadPath}" }
         val filename = FilenameUtils.getName(extension.srcLink)
         val installPath = Paths.get(
-                FilenameUtils.separatorsToSystem(extension.installPath + DEFAULT_SEPARATOR + filename)
+                FilenameUtils.separatorsToSystem(extension.downloadPath + DEFAULT_SEPARATOR + filename)
         )
         URL(extension.srcLink).openStream().use {
             if (!Files.exists(installPath)) { Files.createDirectories(installPath) }
