@@ -5,7 +5,7 @@ package com.lapots.gradle.plugins.appenv.core.spec
  */
 interface DownloadTaskSpec {
 
-    fun from(srcLink: String)
+    fun from(srcLink: () -> String)
 
-    fun to(downloadPath: String)
+    fun to(downloadPath: () -> String)
 }

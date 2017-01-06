@@ -15,7 +15,7 @@ import org.apache.commons.io.FilenameUtils
 class ProcessStream {
     companion object : KLogging()
 
-    lateinit var source: String // /downloads/file.msi
+    var executable = "" // /downloads/file.msi
     var destination = "" // /installations
 
     infix fun do_install(closure: ProcessStream.() -> Unit) {
@@ -23,7 +23,7 @@ class ProcessStream {
     }
 
     fun from(closure: () -> String) : ProcessStream {
-        source = closure()
+        executable = closure()
         return this
     }
 
@@ -33,16 +33,13 @@ class ProcessStream {
     }
 
     private fun install() {
-        val fileName = FilenameUtils.getBaseName(source)
-
-        if (destination.isEmpty()) { destination = FilenameUtils.getPath(source) }
-
-        logger.info { "Attempt to install $fileName into $destination" }
+        if (destination.isEmpty()) { destination = FilenameUtils.getPath(executable) }
+        logger.info { "Attempt to install $executable into $destination" }
 
         val cmdLine = CommandLine(MSI_RUNNER)
         cmdLine.addArgument("/q")
         cmdLine.addArgument("/i")
-        cmdLine.addArgument(fileName)
+        cmdLine.addArgument(executable)
         cmdLine.addArgument("INSTALLOCATION=\"$destination\"")
         cmdLine.addArgument("ADDLOCAL=\"all\"")
 
@@ -51,5 +48,7 @@ class ProcessStream {
 
         executor.watchdog = ExecuteWatchdog(60000)
         val exitValue = executor.execute(cmdLine)
+
+        logger.info { "Application finished with $exitValue" }
     }
 }

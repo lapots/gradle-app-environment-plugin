@@ -7,6 +7,7 @@ import com.lapots.gradle.plugins.appenv.core.compressor.UnpackStream
 import com.lapots.gradle.plugins.appenv.core.process.ProcessStream
 import mu.KLogging
 import org.apache.commons.io.FilenameUtils
+import sun.plugin2.main.server.Plugin
 
 /**
  * Processes downloaded file.
@@ -16,41 +17,37 @@ class FileProcessingCore(val extension: ApplicationEnvironmentExtension) {
     companion object : KLogging()
 
     fun execute() {
-        // TODO: adjust logic to support downloadPath instead of srcLink
-        val ext = FilenameUtils.getExtension(extension.srcLink)
-        when (ext) {
-            in SUPPORTED_ARCHIVE_EXTENSIONS -> processArchive()
-            "msi"   -> processMsi()
+        processFile(FilenameUtils.getName(extension.srcLink))
+    }
+
+    private fun processFile(file: String) {
+        when (FilenameUtils.getExtension(file)) {
+            in SUPPORTED_ARCHIVE_EXTENSIONS -> processArchive(file)
+            "msi"   -> processMsi(file)
             else    -> {
-                logger.info { "Cannot process further: ${ extension.srcLink }"}
+                logger.info { "Cannot process further: $file"}
             }
         }
     }
 
-    private fun processArchive() {
-        logger.debug { "Unpacking archive ${extension.srcLink}" }
+    private fun processArchive(archive: String) {
+        logger.debug { "Unpacking archive $archive" }
 
-        val filename = FilenameUtils.getName(extension.srcLink)
-        val downloadPath = extension.downloadPath
-
-        val file = FilenameUtils.separatorsToSystem(downloadPath + DEFAULT_SEPARATOR + filename)
-
+        val file = PluginUtils.buildPath(extension.downloadPath, archive)
         logger.info { "Attempt to unpack archive $file" }
         UnpackStream() do_unpack {
             from { file } // /downloads/file.tar.xz
             to { extension.installPath } // /installations
         }
+
+        // in case of multiple extension archive
+        processFile(FilenameUtils.getBaseName(file))
     }
 
-    private fun processMsi() {
-        // investigate common-exec library
-        logger.info { "Attempt to process msi" }
+    private fun processMsi(msi: String) {
+        logger.info { "Attempt to process $msi" }
 
-        val filename = FilenameUtils.getName(extension.srcLink)
-        val downloadPath = extension.downloadPath
-
-        val file = FilenameUtils.separatorsToSystem(downloadPath + DEFAULT_SEPARATOR + filename)
-
+        val file = PluginUtils.buildPath(extension.downloadPath, msi)
         logger.info { "Attempt to install $file" }
         ProcessStream() do_install {
             from { file }

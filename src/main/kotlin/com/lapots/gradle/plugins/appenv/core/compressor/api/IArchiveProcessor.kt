@@ -5,6 +5,6 @@ import java.io.InputStream
 /**
  * Interface for different decompress streams.
  */
-interface ICompressorStream {
-    fun getUnpackStream(inputStream: InputStream) : InputStream
+interface IArchiveProcessor {
+    fun process(inputStream: InputStream, destination: String): Int
 }

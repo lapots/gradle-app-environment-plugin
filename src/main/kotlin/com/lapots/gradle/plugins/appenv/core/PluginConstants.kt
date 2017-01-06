@@ -5,6 +5,6 @@ package com.lapots.gradle.plugins.appenv.core
  */
 object PluginConstants {
     val DEFAULT_SEPARATOR = "/"
-    val SUPPORTED_ARCHIVE_EXTENSIONS = listOf("xz", "msi")
+    val SUPPORTED_ARCHIVE_EXTENSIONS = listOf("xz", "tar")
     val MSI_RUNNER = "msiexec.exe"
 }
