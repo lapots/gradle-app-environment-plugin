@@ -20,13 +20,13 @@ object TarArchiveProcessor : IArchiveProcessor, KLogging() {
 
         var archiveEntry = archiveStream.nextTarEntry
         while(archiveEntry != null) {
-            archiveEntry = archiveStream.nextTarEntry
-
             val file = File(PluginUtils.buildPath(destination, archiveEntry.name))
-            if (!file.parentFile.exists()) { file.parentFile.mkdirs() }
-
-            if (archiveEntry.isDirectory) { file.mkdirs() }
-            else { IOUtils.copy(archiveStream, FileOutputStream(file)) }
+            if (archiveEntry.isDirectory) {
+                file.mkdirs()
+            } else {
+                IOUtils.copy(archiveStream, FileOutputStream(file))
+            }
+            archiveEntry = archiveStream.nextTarEntry
         }
 
         archiveStream.close()
