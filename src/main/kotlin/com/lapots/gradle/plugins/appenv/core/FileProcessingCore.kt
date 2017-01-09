@@ -1,13 +1,11 @@
 package com.lapots.gradle.plugins.appenv.core
 
 import com.lapots.gradle.plugins.appenv.ApplicationEnvironmentExtension
-import com.lapots.gradle.plugins.appenv.core.PluginConstants.DEFAULT_SEPARATOR
 import com.lapots.gradle.plugins.appenv.core.PluginConstants.SUPPORTED_ARCHIVE_EXTENSIONS
 import com.lapots.gradle.plugins.appenv.core.compressor.UnpackStream
 import com.lapots.gradle.plugins.appenv.core.process.ProcessStream
 import mu.KLogging
 import org.apache.commons.io.FilenameUtils
-import sun.plugin2.main.server.Plugin
 
 /**
  * Processes downloaded file.

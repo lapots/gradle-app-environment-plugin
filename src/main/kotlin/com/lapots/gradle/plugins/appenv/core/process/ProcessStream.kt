@@ -22,6 +22,10 @@ class ProcessStream {
         install()
     }
 
+    infix fun do_uninstall(closure: ProcessStream.() -> Unit) {
+        uninstall()
+    }
+
     fun from(closure: () -> String) : ProcessStream {
         executable = closure()
         return this
@@ -37,11 +41,27 @@ class ProcessStream {
         logger.info { "Attempt to install $executable into $destination" }
 
         val cmdLine = CommandLine(MSI_RUNNER)
-        cmdLine.addArgument("/q")
+        cmdLine.addArgument("/qn")
         cmdLine.addArgument("/i")
         cmdLine.addArgument(executable)
         cmdLine.addArgument("INSTALLOCATION=\"$destination\"")
         cmdLine.addArgument("ADDLOCAL=\"all\"")
+
+        val executor = DefaultExecutor()
+        executor.setExitValue(1)
+
+        executor.watchdog = ExecuteWatchdog(60000)
+        val exitValue = executor.execute(cmdLine)
+
+        logger.info { "Application finished with $exitValue" }
+    }
+
+    private fun uninstall() {
+        logger.info { "Attempt to uninstall $executable from $destination" }
+
+        val cmdLine = CommandLine(MSI_RUNNER)
+        cmdLine.addArgument("/x")
+        cmdLine.addArgument(executable)
 
         val executor = DefaultExecutor()
         executor.setExitValue(1)
