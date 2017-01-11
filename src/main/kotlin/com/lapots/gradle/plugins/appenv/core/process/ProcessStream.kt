@@ -19,6 +19,7 @@ class ProcessStream {
     var destination = "" // /installations
 
     infix fun do_install(closure: ProcessStream.() -> Unit) {
+        closure()
         install()
     }
 
@@ -38,17 +39,18 @@ class ProcessStream {
 
     private fun install() {
         if (destination.isEmpty()) { destination = FilenameUtils.getPath(executable) }
+
         logger.info { "Attempt to install $executable into $destination" }
 
         val cmdLine = CommandLine(MSI_RUNNER)
-        cmdLine.addArgument("/qn")
-        cmdLine.addArgument("/i")
+        cmdLine.addArgument("/a")
         cmdLine.addArgument(executable)
-        cmdLine.addArgument("INSTALLOCATION=\"$destination\"")
-        cmdLine.addArgument("ADDLOCAL=\"all\"")
+        cmdLine.addArgument("/qn")
+        cmdLine.addArgument("INSTALLLOCATION=$destination")
+        cmdLine.addArgument("ADDLOCAL=all")
 
         val executor = DefaultExecutor()
-        executor.setExitValue(1)
+        executor.setExitValue(0)
 
         executor.watchdog = ExecuteWatchdog(60000)
         val exitValue = executor.execute(cmdLine)
