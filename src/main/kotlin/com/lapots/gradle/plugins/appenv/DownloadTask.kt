@@ -12,6 +12,12 @@ open class DownloadTask : DefaultTask() {
     @TaskAction
     fun download() {
         val extension = this.project.extensions.getByName("app") as ApplicationEnvironmentExtension
-        DownloadCore(extension).execute()
+
+        val identifier = this.project.properties["installationId"]
+        if (null == identifier) {
+            DownloadCore(extension).execute()
+        } else {
+            DownloadCore(extension)
+        }
     }
 }

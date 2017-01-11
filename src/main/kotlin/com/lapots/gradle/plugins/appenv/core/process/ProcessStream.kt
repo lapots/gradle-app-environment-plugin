@@ -58,6 +58,7 @@ class ProcessStream {
         logger.info { "Application finished with $exitValue" }
     }
 
+    // not sure if it is needed as it allows to remove folder directly
     private fun uninstall() {
         logger.info { "Attempt to uninstall $executable from $destination" }
 
