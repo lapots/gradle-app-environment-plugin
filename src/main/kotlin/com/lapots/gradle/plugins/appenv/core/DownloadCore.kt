@@ -1,6 +1,5 @@
 package com.lapots.gradle.plugins.appenv.core
 
-import com.lapots.gradle.plugins.appenv.ApplicationEnvironmentExtension
 import mu.KLogging
 import org.apache.commons.io.FilenameUtils
 import java.net.URL
@@ -10,7 +9,7 @@ import java.nio.file.StandardCopyOption
 /**
  * Does downloading.
  */
-class DownloadCore(val extension: ApplicationEnvironmentExtension) {
+class DownloadCore(val extension: ApplicationEnvironmentContainerExtension.ApplicationEnvironmentExtension) {
 
     companion object : KLogging()
 

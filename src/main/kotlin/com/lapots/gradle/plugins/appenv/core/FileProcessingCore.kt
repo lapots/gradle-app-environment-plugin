@@ -1,6 +1,5 @@
 package com.lapots.gradle.plugins.appenv.core
 
-import com.lapots.gradle.plugins.appenv.ApplicationEnvironmentExtension
 import com.lapots.gradle.plugins.appenv.core.PluginConstants.SUPPORTED_ARCHIVE_EXTENSIONS
 import com.lapots.gradle.plugins.appenv.core.compressor.UnpackStream
 import com.lapots.gradle.plugins.appenv.core.process.ProcessStream
@@ -10,7 +9,7 @@ import org.apache.commons.io.FilenameUtils
 /**
  * Processes downloaded file.
  */
-class FileProcessingCore(val extension: ApplicationEnvironmentExtension) {
+class FileProcessingCore(val extension: ApplicationEnvironmentContainerExtension.ApplicationEnvironmentExtension) {
 
     companion object : KLogging()
 
