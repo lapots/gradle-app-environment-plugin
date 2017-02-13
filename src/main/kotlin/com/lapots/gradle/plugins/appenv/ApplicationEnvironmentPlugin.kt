@@ -8,6 +8,7 @@ import org.gradle.api.*
 /**
  * Main plugin class.
  */
+@Deprecated("Some issue with closure evaluation.")
 class ApplicationEnvironmentPlugin : Plugin<Project> {
 
     companion object : KLogging()

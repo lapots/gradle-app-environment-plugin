@@ -16,6 +16,7 @@ import java.nio.file.Paths
  * Generally .xz compresses single files so we should not check
  * where the .xz content is directory.
  */
+@Deprecated("Moved to Groovy")
 object XZArchiveProcessor : IArchiveProcessor {
 
     fun file(absolutePath: String) : File = File(absolutePath).apply {

@@ -3,6 +3,7 @@ package com.lapots.gradle.plugins.appenv.core
 /**
  * Keeps all environments.
  */
+@Deprecated("Some issue with closure evaluation.")
 open class ApplicationEnvironmentContainerExtension {
     val environs = mutableMapOf<String, ApplicationEnvironmentExtension>()
 
@@ -17,23 +18,12 @@ open class ApplicationEnvironmentContainerExtension {
     /**
      * Sub extension.
      */
+    @Deprecated("Some issue with closure evaluation.")
     open class ApplicationEnvironmentExtension {
         var installationId = ""
         var srcLink = ""
         var downloadPath = ""
         var installPath = ""
-
-        fun srcLink(closure: () -> String) {
-            srcLink = closure()
-        }
-
-        fun downloadPath(closure: () -> String) {
-            downloadPath = closure()
-        }
-
-        fun installPath(closure: () -> String) {
-            installPath = closure()
-        }
 
         override fun toString(): String {
             return "ApplicationEnvironmentExtension(" +

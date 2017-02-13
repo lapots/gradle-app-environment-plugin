@@ -8,6 +8,7 @@ import org.gradle.api.tasks.TaskAction
 /**
  * Installs / Unpacks file.
  */
+@Deprecated("Moved to Groovy")
 open class InstallTask : DefaultTask() {
 
     @TaskAction

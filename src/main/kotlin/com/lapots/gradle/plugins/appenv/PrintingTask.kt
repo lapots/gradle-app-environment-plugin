@@ -7,6 +7,7 @@ import org.gradle.api.tasks.TaskAction
 /**
  * Task for printing environs.
  */
+@Deprecated("Moved to Groovy")
 open class PrintingTask :  DefaultTask() {
 
     @TaskAction

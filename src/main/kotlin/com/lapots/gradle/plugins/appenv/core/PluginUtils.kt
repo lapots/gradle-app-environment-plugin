@@ -9,6 +9,7 @@ import java.nio.file.Paths
 /**
  * Utility classes.
  */
+@Deprecated("Moved to Groovy")
 object PluginUtils : KLogging() {
 
     // constructs from [file/path, simple.zip] -> file/path/simple.zip

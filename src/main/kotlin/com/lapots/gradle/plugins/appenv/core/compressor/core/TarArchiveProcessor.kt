@@ -13,6 +13,7 @@ import java.io.InputStream
 /**
  * Implementation of {@link IArchiveProcessor} for TAR compression.
  */
+@Deprecated("Moved to Groovy")
 object TarArchiveProcessor : IArchiveProcessor, KLogging() {
 
     override fun process(inputStream: InputStream, destination: String): Int {

@@ -1,5 +1,6 @@
 apply plugin: "idea"
 apply plugin: "kotlin"
+apply plugin: "groovy"
 
 buildscript {
     repositories {
@@ -13,7 +14,7 @@ buildscript {
 }
 
 group = 'com.lapots.gradle.plugins.appenv'
-version = '0.3'
+version = '0.5-GROOVY-EXP'
 
 repositories {
     mavenCentral()

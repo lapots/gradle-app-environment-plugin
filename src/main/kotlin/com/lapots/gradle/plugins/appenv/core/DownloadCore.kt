@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption
 /**
  * Does downloading.
  */
+@Deprecated("Moved to Groovy")
 class DownloadCore(val extension: ApplicationEnvironmentContainerExtension.ApplicationEnvironmentExtension) {
 
     companion object : KLogging()
