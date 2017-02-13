@@ -12,7 +12,7 @@ open class ApplicationEnvironmentContainerExtension {
         extension.installationId = id
         environs.put(id, extension)
 
-        extension.closure()
+        extension.process(closure)
     }
 
     /**
@@ -24,6 +24,10 @@ open class ApplicationEnvironmentContainerExtension {
         var srcLink = ""
         var downloadPath = ""
         var installPath = ""
+
+        fun process(closure: ApplicationEnvironmentExtension.() -> Unit) {
+            closure()
+        }
 
         override fun toString(): String {
             return "ApplicationEnvironmentExtension(" +

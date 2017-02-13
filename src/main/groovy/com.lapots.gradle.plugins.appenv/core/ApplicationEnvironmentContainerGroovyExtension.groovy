@@ -21,10 +21,10 @@ class ApplicationEnvironmentContainerGroovyExtension {
         @Override
         public String toString() {
             return "ApplicationEnvironmentGroovyExtension{" +
-                    "installationId=$installationId , " +
-                    "srcLink=$srcLink , " +
-                    "downloadPath=$downloadPath ," +
-                    "installPath=$installPath ," +
+                    "installationId=$installationId, " +
+                    "srcLink=$srcLink, " +
+                    "downloadPath=$downloadPath, " +
+                    "installPath=$installPath" +
                     '}';
         }
     }
