@@ -9,8 +9,7 @@ import org.apache.commons.io.FilenameUtils
 /**
  * Processes downloaded file.
  */
-@Deprecated("Moved to Groovy")
-class FileProcessingCore(val extension: ApplicationEnvironmentContainerExtension.ApplicationEnvironmentExtension) {
+class FileProcessingCore(val extension: ApplicationEnvironmentExtension) {
 
     companion object : KLogging()
 

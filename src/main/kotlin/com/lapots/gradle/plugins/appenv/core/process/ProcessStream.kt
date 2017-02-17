@@ -12,7 +12,6 @@ import org.apache.commons.io.FilenameUtils
  *
  * Currently support only MSI.
  */
-@Deprecated("Moved to Groovy")
 class ProcessStream {
     companion object : KLogging()
 

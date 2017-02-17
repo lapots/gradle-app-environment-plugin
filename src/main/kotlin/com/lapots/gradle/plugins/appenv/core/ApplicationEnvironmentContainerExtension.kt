@@ -3,9 +3,13 @@ package com.lapots.gradle.plugins.appenv.core
 /**
  * Keeps all environments.
  */
-@Deprecated("Some issue with closure evaluation.")
 open class ApplicationEnvironmentContainerExtension {
     val environs = mutableMapOf<String, ApplicationEnvironmentExtension>()
+
+    var installationId = ""
+    var srcLink = ""
+    var installPath = ""
+    var downloadPath = ""
 
     fun app(id: String, closure : ApplicationEnvironmentExtension.() -> Unit) {
         val extension = ApplicationEnvironmentExtension()
@@ -13,29 +17,7 @@ open class ApplicationEnvironmentContainerExtension {
         environs.put(id, extension)
 
         extension.process(closure)
-    }
 
-    /**
-     * Sub extension.
-     */
-    @Deprecated("Some issue with closure evaluation.")
-    open class ApplicationEnvironmentExtension {
-        var installationId = ""
-        var srcLink = ""
-        var downloadPath = ""
-        var installPath = ""
-
-        fun process(closure: ApplicationEnvironmentExtension.() -> Unit) {
-            closure()
-        }
-
-        override fun toString(): String {
-            return "ApplicationEnvironmentExtension(" +
-                        "installationId='$installationId', " +
-                        "srcLink='$srcLink', " +
-                        "downloadPath='$downloadPath', " +
-                        "installPath='$installPath')"
-        }
-
+        extension.setEverything(installationId, srcLink, downloadPath, installPath)
     }
 }

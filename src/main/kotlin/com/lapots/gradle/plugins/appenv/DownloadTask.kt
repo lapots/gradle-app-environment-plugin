@@ -8,7 +8,6 @@ import org.gradle.api.tasks.TaskAction
 /**
  * Downloads file.
  */
-@Deprecated("Moved to Groovy")
 open class DownloadTask : DefaultTask() {
 
     @TaskAction

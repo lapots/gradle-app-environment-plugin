@@ -14,7 +14,6 @@ import java.io.FileInputStream
 /**
  * DSL for fancy unpacking.
  */
-@Deprecated("Moved to Groovy")
 class UnpackStream  {
     var archive = "" // /downloads/file.tar.xz
     var destination = "" // /installations

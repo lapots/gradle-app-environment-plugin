@@ -1,14 +1,12 @@
 package com.lapots.gradle.plugins.appenv
 
 import com.lapots.gradle.plugins.appenv.core.ApplicationEnvironmentContainerExtension
-import groovy.lang.Closure
 import mu.KLogging
 import org.gradle.api.*
 
 /**
  * Main plugin class.
  */
-@Deprecated("Some issue with closure evaluation.")
 class ApplicationEnvironmentPlugin : Plugin<Project> {
 
     companion object : KLogging()
