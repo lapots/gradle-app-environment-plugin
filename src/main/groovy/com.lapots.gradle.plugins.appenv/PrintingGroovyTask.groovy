@@ -8,11 +8,18 @@ class PrintingGroovyTask extends DefaultTask {
 
     @TaskAction
     def print() {
+
         def extension =
                 project.extensions["env"] as ApplicationEnvironmentContainerGroovyExtension
 
-        extension.environs.each {
-            System.out.println(it.value)
+        def envId = project.properties["id"]
+        if (envId) {
+            def env = extension.environs[envId]
+            if (env) { System.out.println(env) }
+        } else {
+            extension.environs.each {
+                System.out.println(it.value)
+            }
         }
     }
 

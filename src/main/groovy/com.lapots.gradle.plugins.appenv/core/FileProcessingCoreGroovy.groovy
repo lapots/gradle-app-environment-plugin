@@ -4,9 +4,10 @@ import com.lapots.gradle.plugins.appenv.core.compressor.UnpackStreamGroovy
 import com.lapots.gradle.plugins.appenv.core.process.ProcessStreamGroovy
 import org.apache.commons.io.FilenameUtils
 
-class FileProcessingCoreGroovy {
+class FileProcessingCoreGroovy implements IExecutorGroovy {
     def extension
 
+    @Override
     def execute() {
         processFile(FilenameUtils.getName(extension.srcLink))
     }
