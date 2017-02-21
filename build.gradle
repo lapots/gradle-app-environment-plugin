@@ -14,7 +14,7 @@ buildscript {
 }
 
 group = 'com.lapots.gradle.plugins.appenv'
-version = '0.5-GROOVY'
+version = '0.5-KOTLIN'
 
 repositories {
     mavenCentral()

@@ -9,11 +9,10 @@ import org.apache.commons.io.FilenameUtils
 /**
  * Processes downloaded file.
  */
-class FileProcessingCore(val extension: ApplicationEnvironmentExtension) {
-
+class FileProcessingCore(extension: ApplicationEnvironmentExtension): AbstractExecutor(extension) {
     companion object : KLogging()
 
-    fun execute() {
+    override fun execute() {
         processFile(FilenameUtils.getName(extension.srcLink))
     }
 

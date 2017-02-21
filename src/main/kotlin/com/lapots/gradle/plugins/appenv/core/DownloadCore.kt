@@ -9,11 +9,12 @@ import java.nio.file.StandardCopyOption
 /**
  * Does downloading.
  */
-class DownloadCore(val extension: ApplicationEnvironmentExtension) {
+class DownloadCore(extension: ApplicationEnvironmentExtension):
+        AbstractExecutor(extension) {
 
     companion object : KLogging()
 
-    fun execute() {
+    override fun execute() {
         logger.info { "Attempt to download from ${extension.srcLink} " +
                 "and save into ${extension.downloadPath}" }
         val filename = FilenameUtils.getName(extension.srcLink)
