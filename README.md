@@ -19,3 +19,5 @@ The prototype for it looks like this
 
 Sequenced run of [download] and [install] allows to download .xz archive into [downloadPath], unpack .xz and unpack of .tar
 with its content to the corresponding [installPath]
+
+Also by providing parameter [id] for that task, you can specify the environment you'd like to download.
