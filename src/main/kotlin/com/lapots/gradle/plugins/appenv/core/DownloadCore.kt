@@ -14,15 +14,19 @@ class DownloadCore(val extension: ApplicationEnvironmentExtension) {
     companion object : KLogging()
 
     fun execute() {
-        logger.debug { "Attempt to download from ${extension.srcLink} " +
+        logger.info { "Attempt to download from ${extension.srcLink} " +
                 "and save into ${extension.downloadPath}" }
         val filename = FilenameUtils.getName(extension.srcLink)
         val installPath = PluginUtils.buildAbsolutePath(extension.downloadPath, filename)
         URL(extension.srcLink).openStream().use {
-            if (!Files.exists(installPath)) { Files.createDirectories(installPath) }
-            logger.info { "Proceed downloading to $installPath" }
-            // allows downloading from URL !!!
-            Files.copy(it, installPath, StandardCopyOption.REPLACE_EXISTING)
+            if (!Files.exists(installPath)) {
+                Files.createDirectories(installPath)
+                logger.info { "Proceed downloading to $installPath" }
+                // allows downloading from URL !!!
+                Files.copy(it, installPath, StandardCopyOption.REPLACE_EXISTING)
+            } else {
+                logger.info { "File $installPath already exists!" }
+            }
         }
     }
 }

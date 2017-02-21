@@ -12,7 +12,7 @@ class ApplicationEnvironmentPlugin : Plugin<Project> {
     companion object : KLogging()
 
     override fun apply(project: Project) {
-        logger.debug { "Initializing plugin" }
+        logger.info { "Initializing plugin" }
 
         project.extensions.create("env", ApplicationEnvironmentContainerExtension::class.java)
         project.task(mapOf ("type" to DownloadTask::class.java), "download")

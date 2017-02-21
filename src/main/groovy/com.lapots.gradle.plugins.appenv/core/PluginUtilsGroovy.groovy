@@ -6,11 +6,11 @@ import java.nio.file.Paths
 
 class PluginUtilsGroovy {
 
-    def buildAbsolutePath(path, file) {
+    static def buildAbsolutePath(path, file) {
         Paths.get(buildPath(path, file))
     }
 
-    def buildPath(path, file) {
+    def static buildPath(path, file) {
         FilenameUtils.separatorsToSystem(path + PluginConstantsGroovy.DEFAULT_SEPARATOR + file)
     }
 }
