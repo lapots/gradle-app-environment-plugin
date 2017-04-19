@@ -18,3 +18,12 @@ Sequenced run of [download] and [install] allows to download .xz archive into [d
 with its content to the corresponding [installPath]
 
 Also by providing parameter [id] for that task, you can specify the environment you'd like to download.
+
+# future
+I want to provide an ability to execute any possible environment via plugin. For example
+
+    `gradle env env-id task`
+
+Or maybe provide different version of a plugins, that extend the current but specificially designed to work with certain
+environments.
+

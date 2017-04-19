@@ -5,6 +5,7 @@ import com.lapots.gradle.plugins.appenv.core.compressor.UnpackStream
 import com.lapots.gradle.plugins.appenv.core.process.ProcessStream
 import mu.KLogging
 import org.apache.commons.io.FilenameUtils
+import java.io.File
 
 /**
  * Processes downloaded file.
@@ -12,11 +13,15 @@ import org.apache.commons.io.FilenameUtils
 class FileProcessingCore(extension: ApplicationEnvironmentExtension): AbstractExecutor(extension) {
     companion object : KLogging()
 
+    val stack: MutableList<String> = mutableListOf()
+
     override fun execute() {
         processFile(FilenameUtils.getName(extension.srcLink))
     }
 
     private fun processFile(file: String) {
+        stack.add(file)
+
         when (FilenameUtils.getExtension(file)) {
             in SUPPORTED_ARCHIVE_EXTENSIONS -> processArchive(file)
             "msi"   -> processMsi(file)
@@ -24,6 +29,16 @@ class FileProcessingCore(extension: ApplicationEnvironmentExtension): AbstractEx
                 logger.info { "Cannot process further: $file"}
             }
         }
+
+        // remove intermediate extractions
+        for (item in stack.indices) {
+            if (item != 0 && item != stack.size) {
+                val stackFile = File(stack[item])
+                stackFile.delete()
+            }
+        }
+
+        stack.clear()
     }
 
     private fun processArchive(archive: String) {

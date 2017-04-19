@@ -1,6 +1,6 @@
-package com.lapots.gradle.plugins.appenv
+package com.lapots.gradle.plugins.appenv.task
 
-import com.lapots.gradle.plugins.appenv.core.ApplicationEnvironmentContainerExtension
+import com.lapots.gradle.plugins.appenv.TaskSupport
 import com.lapots.gradle.plugins.appenv.core.ApplicationEnvironmentExtension
 import com.lapots.gradle.plugins.appenv.core.FileProcessingCore
 import org.gradle.api.DefaultTask

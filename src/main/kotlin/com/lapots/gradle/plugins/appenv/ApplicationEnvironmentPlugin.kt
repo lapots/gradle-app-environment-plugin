@@ -1,6 +1,8 @@
 package com.lapots.gradle.plugins.appenv
 
 import com.lapots.gradle.plugins.appenv.core.ApplicationEnvironmentContainerExtension
+import com.lapots.gradle.plugins.appenv.task.DownloadTask
+import com.lapots.gradle.plugins.appenv.task.InstallTask
 import mu.KLogging
 import org.gradle.api.*
 

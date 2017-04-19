@@ -1,5 +1,8 @@
 package com.lapots.gradle.plugins.appenv.core
 
+/**
+ * Configurable plugin extension.
+ */
 class ApplicationEnvironmentExtension {
     var installationId = ""
     var srcLink = ""
