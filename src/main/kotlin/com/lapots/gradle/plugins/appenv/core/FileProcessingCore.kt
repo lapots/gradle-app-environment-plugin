@@ -32,7 +32,7 @@ class FileProcessingCore(extension: ApplicationEnvironmentExtension): AbstractEx
 
         // remove intermediate extractions
         for (item in stack.indices) {
-            if (item != 0 && item != stack.size) {
+            if (item != 0 && item != stack.size - 1) {
                 val stackFile = File(stack[item])
                 stackFile.delete()
             }
