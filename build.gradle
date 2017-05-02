@@ -1,6 +1,5 @@
 apply plugin: "idea"
 apply plugin: "kotlin"
-apply plugin: "groovy"
 
 buildscript {
     repositories {
